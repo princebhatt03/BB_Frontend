@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    adminUsername: '',
+    username: '',
     password: '',
   });
 
@@ -14,11 +14,37 @@ const AdminLogin = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    // TODO: Add login logic here
-    console.log('Admin Login Data:', formData);
+
+    try {
+      const response = await fetch(
+        `${
+          import.meta.env.VITE_BACKEND_URL ||
+          import.meta.env.VITE_LOCAL_BACKEND_URL
+        }/adminLogin`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+          credentials: 'include',
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage({ type: 'success', text: 'Login Successful!' });
+        localStorage.setItem('adminToken', data.token);
+        navigate('/adminHome');
+      } else {
+        setMessage({ type: 'error', text: data.message });
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'Server Error. Try again later.' });
+    }
   };
 
   return (
@@ -27,6 +53,15 @@ const AdminLogin = () => {
         <h2 className="text-2xl font-bold text-center text-[#BF222B] mb-6">
           Admin Login
         </h2>
+        {message && (
+          <div
+            className={`text-center p-2 rounded ${
+              message.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white mb-4`}>
+            {message.text}
+          </div>
+        )}
+
         <form
           onSubmit={handleSubmit}
           className="space-y-4">
@@ -40,7 +75,7 @@ const AdminLogin = () => {
               type="text"
               id="adminUsername"
               name="adminUsername"
-              value={formData.adminUsername}
+              value={formData.username}
               onChange={handleChange}
               required
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#BF222B]"
