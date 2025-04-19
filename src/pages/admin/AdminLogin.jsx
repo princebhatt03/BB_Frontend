@@ -44,11 +44,14 @@ const AdminLogin = () => {
 
       if (response.ok) {
         setMessage({ type: 'success', text: 'Login Successful!' });
-        // Optional: Save token if you're using JWT
-        localStorage.setItem('adminToken', data.token);
+
+        // ✅ Save session info in sessionStorage
+        sessionStorage.setItem('admin', JSON.stringify(data.admin));
+
+        // ✅ Redirect to admin dashboard
         navigate('/adminHome');
       } else {
-        setMessage({ type: 'error', text: data.message });
+        setMessage({ type: 'error', text: data.error || 'Login failed' });
       }
     } catch (error) {
       setMessage({ type: 'error', text: 'Server Error. Try again later.' });

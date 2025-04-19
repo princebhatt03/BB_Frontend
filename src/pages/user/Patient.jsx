@@ -101,8 +101,8 @@ const Patient = () => {
           <div>
             <label
               htmlFor="mobileNumber"
-              className="block text-sm font-medium text-gray-700">
-              Mobile Number
+              className="block text-s m font-medium text-gray-700">
+              Mobile Number (WhatsApp only)
             </label>
             <input
               type="text"
@@ -182,11 +182,16 @@ const Patient = () => {
 
           <button
             type="button"
-            onClick={() => navigate('/adminHome')}
+            onClick={() => navigate('/')}
             className="w-full mt-2 text-[#BF222B] border border-[#BF222B] py-2 rounded-lg hover:bg-[#BF222B] hover:text-white transition">
             Back to Home
           </button>
-
+          <button
+            type="button"
+            onClick={() => navigate('/adminHome')}
+            className="w-full mt-2 text-[#BF222B] border border-[#BF222B] py-2 rounded-lg hover:bg-[#BF222B] hover:text-white transition">
+            Admin Home
+          </button>
           <p className="text-sm text-center text-gray-700">
             Need Blood?{' '}
             <a

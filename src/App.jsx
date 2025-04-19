@@ -16,6 +16,7 @@ import Patient from './pages/user/Patient';
 import Donar from './pages/user/Donar';
 import About from './pages/AboutUS';
 import Terms from './pages/Terms';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
@@ -53,7 +54,11 @@ const App = () => {
           />
           <Route
             path="/adminHome"
-            element={<AdminHome />}
+            element={
+              <ProtectedRoute>
+                <AdminHome />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/adminRegister"

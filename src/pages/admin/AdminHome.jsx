@@ -18,11 +18,15 @@ const AdminHome = () => {
         }/adminLogout`,
         {
           method: 'POST',
-          credentials: 'include',
+          credentials: 'include', // include session cookies
         }
       );
 
       if (response.ok) {
+        // ✅ Clear sessionStorage on logout
+        sessionStorage.removeItem('admin');
+
+        // Redirect to admin login page
         navigate('/adminLogin');
       } else {
         console.error('Logout failed');
@@ -80,7 +84,7 @@ const AdminHome = () => {
         });
 
         if (!response.ok) {
-          if (response.status === 401) {
+          if (response.status === 200) {
             // console.error('Unauthorized access - Admin not logged in.');
             navigate('/adminLogin');
           } else {
@@ -231,9 +235,14 @@ const AdminHome = () => {
                         onClick={() => handleDeleteUser(user._id)}>
                         Delete
                       </button>
-                      <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
-                        Contact
-                      </button>
+                      <a
+                        href={`https://wa.me/91${user.mobile}`}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+                          Contact
+                        </button>
+                      </a>
                     </td>
                   </tr>
                 ))
@@ -293,6 +302,16 @@ const AdminHome = () => {
                         onClick={() => handleDeletePatient(patient._id)}>
                         Delete
                       </button>
+                    </td>
+                    <td className="border p-2 flex justify-center gap-2">
+                      <a
+                        href={`https://wa.me/91${patient.mobile}`}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+                          WhatsApp
+                        </button>
+                      </a>
                     </td>
                   </tr>
                 ))
