@@ -189,7 +189,7 @@ const Donar = () => {
 
           <button
             type="button"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/adminHome')}
             className="w-full mt-2 text-[#BF222B] border border-[#BF222B] py-2 rounded-lg hover:bg-[#BF222B] hover:text-white transition">
             Back to Home
           </button>

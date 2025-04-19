@@ -8,13 +8,14 @@ const AdminHome = () => {
   const [adminName, setAdminName] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Handle Logout
   const handleLogout = async () => {
     try {
       const response = await fetch(
         `${
           import.meta.env.VITE_BACKEND_URL ||
           import.meta.env.VITE_LOCAL_BACKEND_URL
-        }/logout`,
+        }/adminLogout`,
         {
           method: 'POST',
           credentials: 'include',
@@ -31,6 +32,7 @@ const AdminHome = () => {
     }
   };
 
+  // Fetch Users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -47,6 +49,7 @@ const AdminHome = () => {
       }
     };
 
+    // Fetch Patients
     const fetchPatients = async () => {
       try {
         const response = await fetch(
@@ -78,7 +81,8 @@ const AdminHome = () => {
 
         if (!response.ok) {
           if (response.status === 401) {
-            console.error('Unauthorized access - Admin not logged in.');
+            // console.error('Unauthorized access - Admin not logged in.');
+            navigate('/adminLogin');
           } else {
             console.error(`Error: ${response.status} - ${response.statusText}`);
           }
@@ -86,20 +90,22 @@ const AdminHome = () => {
         }
 
         const data = await response.json();
-        setAdminName(data.adminName);
+        setAdminName(data.adminName); // Set the logged-in admin's name
       } catch (error) {
         console.error('Error fetching admin details:', error);
+        navigate('/adminLogin'); // Redirect on error
       }
     };
 
     fetchUsers();
     fetchPatients();
     fetchAdmin();
-  }, []);
+  }, [navigate]);
 
+  // Handle Delete User
   const handleDeleteUser = async id => {
     try {
-      await fetch(
+      const response = await fetch(
         `${
           import.meta.env.VITE_BACKEND_URL ||
           import.meta.env.VITE_LOCAL_BACKEND_URL
@@ -109,15 +115,20 @@ const AdminHome = () => {
         }
       );
 
-      setUsers(users.filter(user => user._id !== id));
+      if (response.ok) {
+        setUsers(users.filter(user => user._id !== id));
+      } else {
+        console.error('Error deleting user:', response.statusText);
+      }
     } catch (error) {
       console.error('Error deleting user:', error);
     }
   };
 
+  // Handle Delete Patient
   const handleDeletePatient = async id => {
     try {
-      await fetch(
+      const response = await fetch(
         `${
           import.meta.env.VITE_BACKEND_URL ||
           import.meta.env.VITE_LOCAL_BACKEND_URL
@@ -127,7 +138,11 @@ const AdminHome = () => {
         }
       );
 
-      setPatients(patients.filter(patient => patient._id !== id));
+      if (response.ok) {
+        setPatients(patients.filter(patient => patient._id !== id));
+      } else {
+        console.error('Error deleting patient:', response.statusText);
+      }
     } catch (error) {
       console.error('Error deleting patient:', error);
     }
@@ -189,8 +204,8 @@ const AdminHome = () => {
                 <th className="border p-2">Email</th>
                 <th className="border p-2">Mobile</th>
                 <th className="border p-2">Blood Group</th>
-                <th className="border p-2">Donate Blood</th>
                 <th className="border p-2">Agree Terms</th>
+                <th className="border p-2">Donate Blood</th>
                 <th className="border p-2">Actions</th>
               </tr>
             </thead>
@@ -205,10 +220,10 @@ const AdminHome = () => {
                     <td className="border p-2">{user.mobile}</td>
                     <td className="border p-2">{user.bloodGroup}</td>
                     <td className="border p-2">
-                      {user.donateBlood ? 'Yes' : 'No'}
+                      {user.agreeTerms ? 'Yes' : 'No'}
                     </td>
                     <td className="border p-2">
-                      {user.agreeTerms ? 'Yes' : 'No'}
+                      {user.donateBlood ? 'Yes' : 'No'}
                     </td>
                     <td className="border p-2 flex justify-center gap-2">
                       <button
@@ -239,7 +254,7 @@ const AdminHome = () => {
       {/* Add New Patient Button */}
       <div className="flex justify-center">
         <button
-          onClick={() => navigate('/contact')}
+          onClick={() => navigate('/patient')}
           className="w-1/5 bg-[#fdc46f] text-white py-2 rounded hover:bg-[#e0982b] transition duration-300 mb-6">
           Add New Patient
         </button>
@@ -256,22 +271,20 @@ const AdminHome = () => {
             <thead>
               <tr className="bg-gray-200">
                 <th className="border p-2">Full Name</th>
-                <th className="border p-2">AADHAR CARD No.</th>
-                <th className="border p-2">MOBILE</th>
-                <th className="border p-2">BLOOD GROUP</th>
-                <th className="border p-2">WHY BLOOD REQUIRED?</th>
-                <th className="border p-2">Actions</th>
+                <th className="border p-2">Mobile</th>
+                <th className="border p-2">Aadhar Card Number</th>
+                <th className="border p-2">Blood Group</th>
+                <th className="border p-2">Details (Why Blood is Required?)</th>
+                <th className="border p-2">Action</th>
               </tr>
             </thead>
             <tbody>
               {patients.length > 0 ? (
                 patients.map(patient => (
-                  <tr
-                    key={patient._id}
-                    className="text-center border">
+                  <tr key={patient._id}>
                     <td className="border p-2">{patient.fullName}</td>
-                    <td className="border p-2">{patient.aadhaar}</td>
                     <td className="border p-2">{patient.mobile}</td>
+                    <td className="border p-2">{patient.aadhaar}</td>
                     <td className="border p-2">{patient.bloodGroup}</td>
                     <td className="border p-2">{patient.details}</td>
                     <td className="border p-2 flex justify-center gap-2">
@@ -280,16 +293,13 @@ const AdminHome = () => {
                         onClick={() => handleDeletePatient(patient._id)}>
                         Delete
                       </button>
-                      <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
-                        Contact
-                      </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
                   <td
-                    colSpan="6"
+                    colSpan="8"
                     className="text-center p-4">
                     No patients available.
                   </td>

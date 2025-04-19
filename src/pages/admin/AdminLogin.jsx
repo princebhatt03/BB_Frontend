@@ -3,17 +3,22 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
+
+  // State for form data
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
 
+  // State for Flash Message
+  const [message, setMessage] = useState('');
+
+  // Handle Input Change
   const handleChange = e => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // Handle Form Submission
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -29,6 +34,8 @@ const AdminLogin = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
+
+          // ✅ Important for sending cookies (sessions)
           credentials: 'include',
         }
       );
@@ -37,6 +44,7 @@ const AdminLogin = () => {
 
       if (response.ok) {
         setMessage({ type: 'success', text: 'Login Successful!' });
+        // Optional: Save token if you're using JWT
         localStorage.setItem('adminToken', data.token);
         navigate('/adminHome');
       } else {
@@ -53,6 +61,7 @@ const AdminLogin = () => {
         <h2 className="text-2xl font-bold text-center text-[#BF222B] mb-6">
           Admin Login
         </h2>
+
         {message && (
           <div
             className={`text-center p-2 rounded ${
@@ -61,20 +70,19 @@ const AdminLogin = () => {
             {message.text}
           </div>
         )}
-
         <form
           onSubmit={handleSubmit}
           className="space-y-4">
           <div>
             <label
-              htmlFor="adminUsername"
+              htmlFor="username"
               className="block text-sm font-medium text-gray-700">
               Admin Username
             </label>
             <input
               type="text"
-              id="adminUsername"
-              name="adminUsername"
+              id="username"
+              name="username"
               value={formData.username}
               onChange={handleChange}
               required
