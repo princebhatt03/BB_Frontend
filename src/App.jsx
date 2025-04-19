@@ -9,7 +9,7 @@ import 'aos/dist/aos.css';
 import Home from './pages/Home';
 import ProductsPage from './pages/ProductsPage';
 import TestimonialsPage from './pages/TestimonialsPage';
-import AdminRegister from './pages/admin/adminRegister';
+import AdminRegister from './pages/admin/AdminRegister';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminHome from './pages/admin/AdminHome';
 import Patient from './pages/user/Patient';
