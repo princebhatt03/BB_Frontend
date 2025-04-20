@@ -1,5 +1,5 @@
 import React from 'react';
-import BannerImg from '../../../public/11.jpg';
+import BannerImg from '../../assets/11.jpg';
 
 const data = [
   { type: 'A+', donateTo: 'A+, AB+', receiveFrom: 'A+, A-, O+, O-' },

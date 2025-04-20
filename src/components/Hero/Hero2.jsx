@@ -40,7 +40,7 @@ const Hero2 = () => {
     <div
       className="relative w-full min-h-[90vh] flex items-center justify-center px-4 py-12 bg-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('../public/4.jpg')`,
+        backgroundImage: `url('../4.jpg')`,
       }}>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50 z-0"></div>
