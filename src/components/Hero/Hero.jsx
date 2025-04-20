@@ -3,6 +3,7 @@ import Image1 from '../../assets/g1.jpg';
 import Image2 from '../../assets/g2.jpg';
 import Image3 from '../../assets/g3.jpg';
 import Slider from 'react-slick';
+import { useNavigate } from 'react-router-dom';
 
 const ImageList = [
   {
@@ -28,7 +29,11 @@ const ImageList = [
   },
 ];
 
-const Hero = ({ handleOrderPopup }) => {
+const Hero = () => {
+  const navigate = useNavigate();
+  const handleOrderPopup = () => {
+    navigate('/donar');
+  };
   var settings = {
     dots: false,
     arrows: false,
@@ -41,6 +46,7 @@ const Hero = ({ handleOrderPopup }) => {
     pauseOnHover: false,
     pauseOnFocus: true,
   };
+  navigate('/donar');
 
   return (
     <div className="relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200 ">

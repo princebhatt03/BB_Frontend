@@ -5,6 +5,7 @@ import Img3 from '../../assets/g3.jpg';
 import Img4 from '../../assets/g4.jpg';
 import Img5 from '../../assets/g5.jpeg';
 import { FaStar } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
 
 const ProductsData = [
   {
@@ -40,6 +41,10 @@ const ProductsData = [
 ];
 
 const Products = () => {
+  const navigate = useNavigate();
+  const handleRegisterClick = () => {
+    navigate('/donar');
+  };
   return (
     <div className="mt-14 mb-12">
       <div className="container">
@@ -90,7 +95,9 @@ const Products = () => {
           </div>
           {/* view all button */}
           <div className="flex justify-center">
-            <button className="text-center mt-10 cursor-pointer bg-primary text-white py-1 px-5 rounded-md">
+            <button
+              onClick={handleRegisterClick}
+              className="text-center mt-10 cursor-pointer bg-primary text-white py-1 px-5 rounded-md">
               Register as a Donar
             </button>
           </div>

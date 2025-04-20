@@ -201,11 +201,11 @@ const Donar = () => {
           </button>
 
           <p className="text-sm text-center text-gray-700">
-            Require Blood?{' '}
+            Need Blood?{' '}
             <a
-              href="/patient"
-              className="text-[#BF222B] font-medium hover:underline hover:text-[#8e1a21] transition duration-300">
-              Register Patient
+              onClick={() => navigate('/patient')}
+              className="text-[#BF222B] cursor-pointer font-medium hover:underline hover:text-[#8e1a21] transition duration-300">
+              Register as Patient
             </a>
           </p>
         </form>

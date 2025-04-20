@@ -3,22 +3,23 @@ import { FaFileContract, FaBars, FaTimes, FaCaretDown } from 'react-icons/fa';
 import DarkMode from './DarkMode';
 import { useNavigate } from 'react-router-dom';
 
-const Menu = [
-  { id: 1, name: 'About US', link: '/about' },
-  { id: 2, name: 'Register Patient', link: '/patient' },
-  { id: 3, name: 'Register Donar', link: '/donar' },
-];
-
-const DropdownLinks = [
-  { id: 1, name: 'Register as Admin', link: '/adminRegister' },
-  { id: 2, name: 'Login as Admin', link: '/adminLogin' },
-];
-
 const Navbar = ({ handleOrderPopup }) => {
+  const navigate = useNavigate();
+
+  const Menu = [
+    { id: 1, name: 'About US', link: '/about' },
+    { id: 2, name: 'Register Patient', link: '/patient' },
+    { id: 3, name: 'Register Donar', link: '/donar' },
+  ];
+
+  const DropdownLinks = [
+    { id: 1, name: 'Register as Admin', link: '/adminRegister' },
+    { id: 2, name: 'Login as Admin', link: '/adminLogin' },
+  ];
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const navigate = useNavigate();
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -45,11 +46,11 @@ const Navbar = ({ handleOrderPopup }) => {
                 {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
               </button>
             </div>
-            <a
-              href="#"
+            <button
+              onClick={() => navigate('/')}
               className="font-extrabold text-2xl flex gap-2">
               <h3>Blood Bank Logo</h3>
-            </a>
+            </button>
           </div>
 
           {/* Right Side */}
@@ -73,11 +74,11 @@ const Navbar = ({ handleOrderPopup }) => {
         <ul className="flex items-center gap-4">
           {Menu.map(data => (
             <li key={data.id}>
-              <a
-                href={data.link}
+              <button
+                onClick={() => navigate(data.link)}
                 className="inline-block px-4 hover:text-primary duration-200">
                 {data.name}
-              </a>
+              </button>
             </li>
           ))}
           {/* Dropdown */}
@@ -101,11 +102,11 @@ const Navbar = ({ handleOrderPopup }) => {
                 <ul>
                   {DropdownLinks.map(data => (
                     <li key={data.id}>
-                      <a
-                        href={data.link}
-                        className="inline-block w-full rounded-md p-2 hover:bg-primary/20">
+                      <button
+                        onClick={() => navigate(data.link)}
+                        className="inline-block w-full rounded-md p-2 text-left hover:bg-primary/20">
                         {data.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -121,11 +122,14 @@ const Navbar = ({ handleOrderPopup }) => {
           <ul className="flex flex-col gap-2">
             {Menu.map(data => (
               <li key={data.id}>
-                <a
-                  href={data.link}
-                  className="block py-2 border-b border-gray-300 dark:border-gray-700 hover:text-primary duration-200">
+                <button
+                  onClick={() => {
+                    navigate(data.link);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left py-2 border-b border-gray-300 dark:border-gray-700 hover:text-primary duration-200">
                   {data.name}
-                </a>
+                </button>
               </li>
             ))}
             {/* Dropdown for Mobile */}
@@ -144,11 +148,15 @@ const Navbar = ({ handleOrderPopup }) => {
                 <ul className="pl-4 mt-1 flex flex-col gap-1">
                   {DropdownLinks.map(data => (
                     <li key={data.id}>
-                      <a
-                        href={data.link}
-                        className="block py-1 text-sm hover:text-primary">
+                      <button
+                        onClick={() => {
+                          navigate(data.link);
+                          setIsMobileMenuOpen(false);
+                          setIsDropdownOpen(false);
+                        }}
+                        className="block py-1 text-left w-full text-sm hover:text-primary">
                         {data.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>

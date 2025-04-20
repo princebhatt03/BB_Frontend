@@ -193,11 +193,11 @@ const Patient = () => {
             Admin Home
           </button>
           <p className="text-sm text-center text-gray-700">
-            Need Blood?{' '}
+            Want to Donate Blood?{' '}
             <a
-              href="/donar"
-              className="text-[#BF222B] font-medium hover:underline hover:text-[#8e1a21] transition duration-300">
-              Register as Donor
+              onClick={() => navigate('/donar')}
+              className="text-[#BF222B] cursor-pointer font-medium hover:underline hover:text-[#8e1a21] transition duration-300">
+              Register as Donar
             </a>
           </p>
         </form>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import BannerImg from '../assets/11.jpg';
 
 const AboutUS = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const AboutUS = () => {
           </div>
           <div className="mt-6 md:mt-0 md:w-1/2 flex justify-center">
             <img
-              src="./11.jpg"
+              src={BannerImg}
               alt="Blood Donation"
               className="rounded-lg shadow-lg"
             />
@@ -86,11 +87,12 @@ const AboutUS = () => {
             lives.
           </p>
           <div className="flex flex-col space-y-4">
-            <a
-              href="/donar"
-              className="inline-block bg-[#BF222B] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#a41d26] transition duration-300 w-full">
-              Register as Donor
-            </a>
+            <button
+              type="button"
+              onClick={() => navigate('/donar')}
+              className="w-full py-3 text-[#BF222B] border border-[#BF222B] rounded-lg hover:bg-[#BF222B] hover:text-white transition duration-300">
+              Register as Donar
+            </button>
             <button
               type="button"
               onClick={() => navigate('/')}

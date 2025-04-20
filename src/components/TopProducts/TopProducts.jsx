@@ -3,6 +3,7 @@ import Img1 from '../../assets/b1.png';
 import Img2 from '../../assets/b2.png';
 import Img3 from '../../assets/b3.png';
 import { FaStar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const ProductsData = [
   {
@@ -28,7 +29,13 @@ const ProductsData = [
   },
 ];
 
-const TopProducts = ({ handleOrderPopup }) => {
+const TopProducts = () => {
+  const navigate = useNavigate();
+
+  const handleOrderPopup = () => {
+    navigate('/patient');
+  };
+
   return (
     <div>
       <div className="container">

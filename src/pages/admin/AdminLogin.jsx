@@ -125,8 +125,8 @@ const AdminLogin = () => {
           <p className="text-sm text-center text-gray-700">
             Don't have an account?{' '}
             <a
-              href="/adminRegister"
-              className="text-[#BF222B] font-medium hover:underline hover:text-[#8e1a21] transition duration-300">
+              onClick={() => navigate('/adminRegister')}
+              className="text-[#BF222B] cursor-pointer font-medium hover:underline hover:text-[#8e1a21] transition duration-300">
               Register as Admin
             </a>
           </p>

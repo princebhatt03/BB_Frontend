@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Banner from '../../assets/website/footer-pattern.jpg';
 import { FaGithub, FaInstagram, FaLinkedin, FaUser } from 'react-icons/fa';
 
@@ -39,6 +39,8 @@ const FooterLinks2 = [
 ];
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <div
       style={BannerImg}
@@ -65,11 +67,11 @@ const Footer = () => {
                 <ul className="flex flex-col gap-3">
                   {FooterLinks.map(link => (
                     <li key={link.title}>
-                      <Link
-                        to={link.link}
-                        className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                      <button
+                        onClick={() => navigate(link.link)}
+                        className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200 bg-transparent border-none p-0 text-left">
                         {link.title}
-                      </Link>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -83,11 +85,11 @@ const Footer = () => {
                 <ul className="flex flex-col gap-3">
                   {FooterLinks2.map(link => (
                     <li key={link.title}>
-                      <Link
-                        to={link.link}
-                        className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                      <button
+                        onClick={() => navigate(link.link)}
+                        className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200 bg-transparent border-none p-0 text-left">
                         {link.title}
-                      </Link>
+                      </button>
                     </li>
                   ))}
                 </ul>
