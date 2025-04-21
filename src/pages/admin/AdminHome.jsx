@@ -77,27 +77,19 @@ const AdminHome = () => {
 
         const response = await fetch(`${backendURL}/getAdminDetails`, {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
           credentials: 'include',
         });
 
         if (!response.ok) {
-          if (response.status === 200) {
-            // console.error('Unauthorized access - Admin not logged in.');
-            navigate('/adminLogin');
-          } else {
-            console.error(`Error: ${response.status} - ${response.statusText}`);
-          }
+          navigate('/adminLogin');
           return;
         }
 
         const data = await response.json();
-        setAdminName(data.adminName); // Set the logged-in admin's name
+        setAdminName(data.adminName);
       } catch (error) {
         console.error('Error fetching admin details:', error);
-        navigate('/adminLogin'); // Redirect on error
+        navigate('/adminLogin');
       }
     };
 
