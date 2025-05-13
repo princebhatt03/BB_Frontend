@@ -6,136 +6,142 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-black mb-8">
-          Types of Donation
+          दान के प्रकार
         </h2>
 
         {/* Description */}
         <p className="text-center text-black max-w-4xl mx-auto mb-10 text-lg leading-relaxed">
-          The average human body contains about five liters of blood, which is
-          made of several cellular and non-cellular components such as Red blood
-          cells, Platelets, and Plasma.
+          औसत मानव शरीर में लगभग पाँच लीटर रक्त होता है, जो लाल रक्त कोशिकाओं,
+          प्लेटलेट्स और प्लाज़्मा जैसे कई सेलुलर और गैर-सेलुलर घटकों से बना होता
+          है।
           <br />
           <br />
-          Each type of component has its unique properties and can be used for
-          different indications. The donated blood is separated into these
-          components by the blood centre, and one donated unit can save up to
-          four lives depending on the number of components separated from your
-          blood.
+          प्रत्येक प्रकार के घटक के अपने विशिष्ट गुण होते हैं और उनका उपयोग
+          विभिन्न संकेतों के लिए किया जा सकता है। दान किए गए रक्त को रक्त केंद्र
+          द्वारा इन घटकों में अलग किया जाता है, और आपके रक्त से अलग किए गए घटकों
+          की संख्या के आधार पर एक दान की गई इकाई चार लोगों की जान बचा सकती है।
         </p>
 
         {/* Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: Packed Red Blood Cells */}
+          {/* कार्ड 1: पैक्ड रेड ब्लड सेल्स */}
           <div className="bg-[#BF222B] shadow-md p-6 rounded-xl hover:shadow-xl transition-all duration-300 border-t-4 border-white">
             <h3 className="text-xl font-semibold text-[#F8D6A4] mb-2">
-              Packed Red Blood Cells
+              पैक्ड लाल रक्त कोशिकाएं
             </h3>
             <p className="text-white mb-2">
-              <span className="font-semibold">What is it?</span>
+              <span className="font-semibold">यह क्या है?</span>
               <br />
-              Blood is collected, centrifuged and red cells are separated and
-              mixed with a preservative.
+              रक्त एकत्र किया जाता है, सेंट्रीफ्यूज किया जाता है और लाल कोशिकाओं
+              को अलग करके संरक्षक के साथ मिलाया जाता है।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Who can donate?</span>
+              <span className="font-semibold">कौन दान कर सकता है?</span>
               <br />
-              18-65 years old, weight 45kg or more, fit and healthy.
+              18-65 वर्ष की आयु, वजन 45 किलोग्राम या उससे अधिक, स्वस्थ और
+              तंदुरुस्त व्यक्ति।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Used for?</span>
+              <span className="font-semibold">यह किसके लिए उपयोगी है?</span>
               <br />
-              Severe anemia, childbirth, surgery or trauma.
+              गंभीर एनीमिया, प्रसव, सर्जरी या दुर्घटनाओं के मामलों में।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Lasts for?</span>
+              <span className="font-semibold">
+                कितने समय तक सुरक्षित रहता है?
+              </span>
               <br />
-              42 days at 2-6°C.
+              2-6°C पर 42 दिनों तक।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Donation time?</span>
+              <span className="font-semibold">दान में कितना समय लगता है?</span>
               <br />
-              15–30 minutes (incl. pre-check).
+              15–30 मिनट (पूर्व-जांच सहित)।
             </p>
             <p className="text-white">
-              <span className="font-semibold">How often?</span>
+              <span className="font-semibold">कितनी बार दान कर सकते हैं?</span>
               <br />
-              Males: 90 days | Females: 120 days
+              पुरुष: हर 90 दिन | महिलाएं: हर 120 दिन
             </p>
           </div>
 
-          {/* Card 2: Plasma */}
+          {/* कार्ड 2: प्लाज्मा */}
           <div className="bg-[#BF222B] shadow-md p-6 rounded-xl hover:shadow-xl transition-all duration-300 border-t-4 border-white">
             <h3 className="text-xl font-semibold text-[#F8D6A4] mb-2">
-              Plasma
+              प्लाज्मा
             </h3>
             <p className="text-white mb-2">
-              <span className="font-semibold">What is it?</span>
+              <span className="font-semibold">यह क्या है?</span>
               <br />
-              Plasma is the liquid component of blood that carries cells and
-              proteins throughout the body.
+              प्लाज्मा रक्त का तरल घटक है जो शरीर में कोशिकाओं और प्रोटीन को ले
+              जाता है।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Who can donate?</span>
+              <span className="font-semibold">कौन दान कर सकता है?</span>
               <br />
-              Healthy individuals between 18–65 years old.
+              18-65 वर्ष के बीच के स्वस्थ व्यक्ति।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Used for?</span>
+              <span className="font-semibold">यह किसके लिए उपयोगी है?</span>
               <br />
-              Treating patients with clotting disorders, burns, and trauma.
+              खून का थक्का जमने की समस्याओं, जलने और दुर्घटना के मामलों में।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Lasts for?</span>
+              <span className="font-semibold">
+                कितने समय तक सुरक्षित रहता है?
+              </span>
               <br />
-              Frozen plasma can be stored for up to 1 year.
+              जमा हुआ प्लाज्मा 1 वर्ष तक स्टोर किया जा सकता है।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Donation time?</span>
+              <span className="font-semibold">दान में कितना समय लगता है?</span>
               <br />
-              Around 45 minutes.
+              लगभग 45 मिनट।
             </p>
             <p className="text-white">
-              <span className="font-semibold">How often?</span>
+              <span className="font-semibold">कितनी बार दान कर सकते हैं?</span>
               <br />
-              Every 2 weeks.
+              हर 2 सप्ताह में।
             </p>
           </div>
 
-          {/* Card 3: Platelet */}
+          {/* कार्ड 3: प्लेटलेट्स */}
           <div className="bg-[#BF222B] shadow-md p-6 rounded-xl hover:shadow-xl transition-all duration-300 border-t-4 border-white">
             <h3 className="text-xl font-semibold text-[#F8D6A4] mb-2">
-              Platelet
+              प्लेटलेट्स
             </h3>
             <p className="text-white mb-2">
-              <span className="font-semibold">What is it?</span>
+              <span className="font-semibold">यह क्या है?</span>
               <br />
-              Platelets help blood to clot. Extracted from blood using apheresis
-              or separation.
+              प्लेटलेट्स खून के थक्के बनाने में मदद करते हैं। इन्हें रक्त से
+              अफेरेसिस या पृथक्करण द्वारा निकाला जाता है।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Who can donate?</span>
+              <span className="font-semibold">कौन दान कर सकता है?</span>
               <br />
-              18-60 years, healthy and at least 50kg.
+              18-60 वर्ष, स्वस्थ और कम से कम 50 किलोग्राम वजन वाले व्यक्ति।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Used for?</span>
+              <span className="font-semibold">यह किसके लिए उपयोगी है?</span>
               <br />
-              Cancer patients, surgeries, or bleeding disorders.
+              कैंसर के रोगी, सर्जरी, या रक्तस्राव विकार वाले मरीज।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Lasts for?</span>
+              <span className="font-semibold">
+                कितने समय तक सुरक्षित रहता है?
+              </span>
               <br />
-              Just 5 days.
+              केवल 5 दिन।
             </p>
             <p className="text-white mb-2">
-              <span className="font-semibold">Donation time?</span>
+              <span className="font-semibold">दान में कितना समय लगता है?</span>
               <br />
-              1.5 to 2 hours.
+              1.5 से 2 घंटे।
             </p>
             <p className="text-white">
-              <span className="font-semibold">How often?</span>
+              <span className="font-semibold">कितनी बार दान कर सकते हैं?</span>
               <br />
-              Every 2 weeks.
+              हर 2 सप्ताह में।
             </p>
           </div>
         </div>

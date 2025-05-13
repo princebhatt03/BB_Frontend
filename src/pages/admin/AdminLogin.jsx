@@ -119,7 +119,7 @@ const AdminLogin = () => {
             type="button"
             onClick={() => navigate('/')}
             className="w-full mt-2 text-[#BF222B] border border-[#BF222B] py-2 rounded-lg hover:bg-[#BF222B] hover:text-white transition">
-            Back to Home
+            Cancel
           </button>
 
           <p className="text-sm text-center text-gray-700">

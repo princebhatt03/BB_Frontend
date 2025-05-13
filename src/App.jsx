@@ -17,6 +17,7 @@ import Donar from './pages/user/Donar';
 import About from './pages/AboutUS';
 import Terms from './pages/Terms';
 import ProtectedRoute from './components/ProtectedRoute';
+import GoogleTranslate from './components/GoogleTranslate'; // ✅ Import added
 
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
@@ -39,6 +40,12 @@ const App = () => {
     <Router>
       <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
         <Navbar />
+
+        {/* ✅ Google Translate Dropdown */}
+        <div className="flex justify-end px-4 mt-2">
+          <GoogleTranslate />
+        </div>
+
         <Routes>
           <Route
             path="/"
@@ -85,6 +92,7 @@ const App = () => {
             element={<Terms />}
           />
         </Routes>
+
         <Footer />
       </div>
     </Router>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaFileContract, FaBars, FaTimes, FaCaretDown } from 'react-icons/fa';
+import { FaUserCircle, FaBars, FaTimes, FaCaretDown } from 'react-icons/fa';
 import DarkMode from './DarkMode';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const Navbar = ({ handleOrderPopup }) => {
   const navigate = useNavigate();
@@ -35,40 +36,42 @@ const Navbar = ({ handleOrderPopup }) => {
   return (
     <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       {/* upper Navbar */}
-      <div className="bg-primary/40 py-2">
+      <div className="bg-white py-2">
         <div className="container flex justify-between items-center">
           <div className="flex items-center gap-4">
             {/* Hamburger */}
-            <div className="sm:hidden block">
+            {/* <div className="sm:hidden block">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="text-2xl text-white">
                 {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
               </button>
-            </div>
+            </div> */}
             <button
               onClick={() => navigate('/')}
-              className="font-extrabold text-2xl flex gap-2">
-              <h3>Blood Bank Logo</h3>
+              className="font-extrabold text-left text-lg flex gap-2">
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-20 w-auto object-contain"
+              />
             </button>
           </div>
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
             <button
-              onClick={() => navigate('/terms')}
+              onClick={() => navigate('/adminLogin')}
               className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group">
-              <span className="group-hover:block hidden transition-all duration-200">
-                Terms & Conditions
-              </span>
-              <FaFileContract className="text-xl text-white drop-shadow-sm cursor-pointer" />
+              <span className="hidden transition-all duration-200">Login</span>
+              <FaUserCircle className="text-xl text-white drop-shadow-sm cursor-pointer" />
             </button>
           </div>
         </div>
       </div>
 
       {/* Desktop Nav */}
-      <div
+      {/* <div
         data-aos="zoom-in"
         className="justify-center hidden sm:flex">
         <ul className="flex items-center gap-4">
@@ -81,7 +84,6 @@ const Navbar = ({ handleOrderPopup }) => {
               </button>
             </li>
           ))}
-          {/* Dropdown */}
           <li
             className="relative cursor-pointer group"
             onMouseEnter={() => setIsDropdownOpen(true)}
@@ -114,10 +116,10 @@ const Navbar = ({ handleOrderPopup }) => {
             )}
           </li>
         </ul>
-      </div>
+      </div> */}
 
       {/* Mobile Nav */}
-      {isMobileMenuOpen && (
+      {/* {isMobileMenuOpen && (
         <div className="sm:hidden bg-white dark:bg-gray-900 px-4 pb-4">
           <ul className="flex flex-col gap-2">
             {Menu.map(data => (
@@ -132,7 +134,6 @@ const Navbar = ({ handleOrderPopup }) => {
                 </button>
               </li>
             ))}
-            {/* Dropdown for Mobile */}
             <li className="relative group">
               <button
                 className="flex items-center justify-between w-full py-2"
@@ -164,7 +165,7 @@ const Navbar = ({ handleOrderPopup }) => {
             </li>
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

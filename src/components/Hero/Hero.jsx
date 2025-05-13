@@ -1,110 +1,74 @@
-import React from 'react';
-import Image1 from '../../assets/g1.jpg';
-import Image2 from '../../assets/g2.jpg';
-import Image3 from '../../assets/g3.jpg';
-import Slider from 'react-slick';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import g1 from '../../assets/g1.jpg';
+import g2 from '../../assets/g2.jpg';
+import g3 from '../../assets/g3.jpg';
+import g4 from '../../assets/g4.jpg';
 
-const ImageList = [
+const slides = [
   {
-    id: 1,
-    img: Image1,
-    title: 'Give the Gift of Life, Donate Blood Today! ',
-    description:
-      'lorem His Life will forever be Changed dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    image: g1,
+    title: 'रक्त की उपलब्धता देखें',
+    subtitle: 'रक्त की उपलब्धता की जांच करें और दान करें।',
+    buttonText: 'रक्तदान करें अभी',
   },
   {
-    id: 2,
-    img: Image2,
-    title: 'BLOD CENTER & BLOOD AVAILABILTY',
-    description:
-      "Who's there lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: g2,
+    title: 'कटनी रक्त दाता एवं नामांकन सोसायटी',
+    subtitle: 'हमारे रक्त दाताओं की सराहना करें।',
+    buttonText: 'रक्तदान करें अभी',
   },
   {
-    id: 3,
-    img: Image3,
-    title: 'See Blood Availability',
-    description:
-      'consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    image: g3,
+    title: 'कटनी रक्त दाता एवं नामांकन सोसायटी',
+    subtitle: 'हमारे रक्त दाताओं की सराहना करें।',
+    buttonText: 'रक्तदान करें अभी',
+  },
+  {
+    image: g4,
+    title: 'कटनी रक्त दाता एवं नामांकन सोसायटी',
+    subtitle: 'हमारे रक्त दाताओं की सराहना करें।',
+    buttonText: 'रक्तदान करें अभी',
   },
 ];
 
 const Hero = () => {
-  const navigate = useNavigate();
-  const handleOrderPopup = () => {
-    navigate('/donar');
-  };
-  var settings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 800,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    cssEase: 'ease-in-out',
-    pauseOnHover: false,
-    pauseOnFocus: true,
-  };
-  navigate('/donar');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prevIndex =>
+        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200 ">
-      {/* background pattern */}
-      <div className="h-[700px] w-[700px] bg-primary/40 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z[8]"></div>
-      {/* hero section */}
-      <div className="container pb-8 sm:pb-0">
-        <Slider {...settings}>
-          {ImageList.map(data => (
-            <div key={data.id}>
-              {' '}
-              {/* Unique key for each slide */}
-              <div className="grid grid-cols-1 sm:grid-cols-2">
-                {/* text content section */}
-                <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10">
-                  <h1
-                    data-aos="zoom-out"
-                    data-aos-duration="500"
-                    data-aos-once="true"
-                    className="text-5xl sm:text-6xl lg:text-7xl font-bold">
-                    {data.title}
-                  </h1>
-                  <p
-                    data-aos="fade-up"
-                    data-aos-duration="500"
-                    data-aos-delay="100"
-                    className="text-sm">
-                    {data.description}
-                  </p>
-                  <div
-                    data-aos="fade-up"
-                    data-aos-duration="500"
-                    data-aos-delay="300">
-                    <button
-                      onClick={handleOrderPopup}
-                      className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full">
-                      Donate Now
-                    </button>
-                  </div>
-                </div>
-                {/* image section */}
-                <div className="order-1 sm:order-2">
-                  <div
-                    data-aos="zoom-in"
-                    data-aos-once="true"
-                    className="relative z-10">
-                    <img
-                      src={data.img}
-                      alt=""
-                      className="w-[300px] h-[300px] sm:h-[450px] sm:w-[450px] sm:scale-105 lg:scale-120 object-contain mx-auto"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
+    <div className="relative w-full h-[70vh] overflow-hidden">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute w-full h-full transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          }`}>
+          <img
+            src={slide.image}
+            alt={slide.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white p-4">
+            <h2 className="text-3xl md:text-5xl font-bold mb-3">
+              {slide.title}
+            </h2>
+            <p className="text-lg md:text-xl mb-5">{slide.subtitle}</p>
+            <button
+              onClick={() => (window.location.href = slide.link)}
+              className="px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition">
+              {slide.buttonText}
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

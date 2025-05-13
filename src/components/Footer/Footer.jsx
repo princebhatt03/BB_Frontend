@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Banner from '../../assets/website/footer-pattern.jpg';
 import { FaGithub, FaInstagram, FaLinkedin, FaUser } from 'react-icons/fa';
+import logo from '../../assets/logo.png';
 
 const BannerImg = {
   backgroundImage: `url(${Banner})`,
@@ -51,10 +52,12 @@ const Footer = () => {
           className="grid md:grid-cols-3 pb-44 pt-5">
           {/* company details */}
           <div className="py-8 px-4">
-            <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
-              Logo
-            </h1>
-            <p>Give the Gift of Life, Donate Blood Today!</p>
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-20 w-auto object-contain"
+            />
+            <p>जीवन का उपहार दें, आज रक्तदान करें!</p>
           </div>
 
           {/* Footer Links */}

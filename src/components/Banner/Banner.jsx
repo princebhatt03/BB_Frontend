@@ -18,7 +18,7 @@ const Banner = () => {
       <section className="w-full px-1 py-16 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
           {/* image section */}
-          <div
+          {/* <div
             data-aos="zoom-in"
             className="w-full md:w-1/2">
             <img
@@ -26,25 +26,23 @@ const Banner = () => {
               alt=""
               className="max-w-[400px] h-[350px] w-full mx-auto drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] object-cover"
             />
-          </div>
+          </div> */}
 
           {/* text details section */}
           <div
             data-aos="zoom-in"
-            className="w-full md:w-1/2 bg-[#F8D6A4] p-6 rounded-xl shadow-xl animate-fadeIn">
+            className="w-full md:w-full bg-[#F8D6A4] p-6 rounded-xl shadow-xl animate-fadeIn">
             <h2 className="text-2xl font-bold mb-4 text-red-600">
-              Compatible Blood Type Donors
+              संगत रक्त प्रकार दाता
             </h2>
             <div className="overflow-x-auto">
               <table className="min-w-full table-auto border-collapse border border-gray-300">
                 <thead>
                   <tr className="bg-red-600 text-white">
-                    <th className="p-3 border border-gray-300">Blood Type</th>
+                    <th className="p-3 border border-gray-300">रक्त प्रकार</th>
+                    <th className="p-3 border border-gray-300">रक्तदान करें</th>
                     <th className="p-3 border border-gray-300">
-                      Donate Blood To
-                    </th>
-                    <th className="p-3 border border-gray-300">
-                      Receive Blood From
+                      रक्त प्राप्त करें
                     </th>
                   </tr>
                 </thead>

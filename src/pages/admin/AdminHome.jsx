@@ -255,9 +255,9 @@ const AdminHome = () => {
       {/* Add New Patient Button */}
       <div className="flex justify-center">
         <button
-          onClick={() => navigate('/patient')}
+          onClick={() => navigate('/donar')}
           className="w-1/5 bg-[#fdc46f] text-white py-2 rounded hover:bg-[#e0982b] transition duration-300 mb-6">
-          Add New Patient
+          Add New Donar
         </button>
       </div>
 
